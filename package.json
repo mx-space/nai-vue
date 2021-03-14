@@ -15,7 +15,7 @@
     "remark": "13.0.0",
     "remark-gfm": "1.0.0",
     "remark-html": "13.0.1",
-    "remark-parse": "5.0.0",
+    "remark-parse": "9.0.0",
     "vue": "3.0.2",
     "vue-router": "4.0.0-rc.3",
     "vuex": "4.0.0-rc.1"
