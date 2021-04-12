@@ -3034,10 +3034,10 @@ vfile@^4.0.0:
     unist-util-stringify-position "^2.0.0"
     vfile-message "^2.0.0"
 
-vite-tsconfig-paths@2.3.0:
-  version "2.3.0"
-  resolved "https://registry.yarnpkg.com/vite-tsconfig-paths/-/vite-tsconfig-paths-2.3.0.tgz#5ecba15108a1f65cd3be86c140073c1c9428a02d"
-  integrity sha512-mAbbzsvMPEuxZtPxxUII8SnVoa4NsevYiCcpgjn5FtjiqYTXT/AsmNK0hXHSf+KQrNns8CoVLYycVg4U5HSo7g==
+vite-tsconfig-paths@2.5.1:
+  version "2.5.1"
+  resolved "https://registry.yarnpkg.com/vite-tsconfig-paths/-/vite-tsconfig-paths-2.5.1.tgz#5bce56220a5f8d3cf4dc2bc5bbb4758f2672d2e5"
+  integrity sha512-qVFOvu6rd4hmWnETyVBGNuhcgj5M68D5gVrc/zpyTLk5WapXzHqmb5V/AywMFSD+5wptOuWcvH6KMdYFEwJAUA==
   dependencies:
     debug "^4.1.1"
     tsconfig-paths "^3.9.0"
