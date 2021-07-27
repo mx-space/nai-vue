@@ -9,7 +9,7 @@
   "dependencies": {
     "clsx": "1.1.1",
     "graphql": "15.5.1",
-    "graphql-request": "3.4.0",
+    "graphql-request": "3.5.0",
     "normalize.css": "8.0.1",
     "qier-progress": "1.0.4",
     "remark": "13.0.0",
