@@ -1,0 +1,30 @@
+import{d as e,o as t,r as n,c as r,w as a,a as o,K as s,b as l,e as i,h as u,R as c,f as p,g as d,i as h,j as g,u as m,k as f,l as y,m as v,n as P,p as b,Q as w,q as $,s as q,t as x}from"./vendor.368ea746.js";!function(){const e=document.createElement("link").relList;if(!(e&&e.supports&&e.supports("modulepreload"))){for(const e of document.querySelectorAll('link[rel="modulepreload"]'))t(e);new MutationObserver((e=>{for(const n of e)if("childList"===n.type)for(const e of n.addedNodes)"LINK"===e.tagName&&"modulepreload"===e.rel&&t(e)})).observe(document,{childList:!0,subtree:!0})}function t(e){if(e.ep)return;e.ep=!0;const t=function(e){const t={};return e.integrity&&(t.integrity=e.integrity),e.referrerpolicy&&(t.referrerPolicy=e.referrerpolicy),"use-credentials"===e.crossorigin?t.credentials="include":"anonymous"===e.crossorigin?t.credentials="omit":t.credentials="same-origin",t}(e);fetch(e.href,t)}}();const N="森",S="寻的碎碎念",k="https://innei.ren",_="https://api.innei.ren";var E=e({setup(){t((()=>{document.title=`${N} | ${S}`}))}});E.render=function(e,t,i,u,c,p){const d=n("router-view");return o(),r(d,null,{default:a((({Component:e})=>[(o(),r(s,{exclude:["note"]},[(o(),r(l(e)))],1024))])),_:1})};var I=Object.freeze({__proto__:null,[Symbol.toStringTag]:"Module",default:E});const L={},C=new i.GraphQLClient(_+"/graphql",{});const T=e({setup:()=>()=>u("header",{class:"header-wrapper"},u(c,{to:"/"},u("h1",null,N,u("small",null,S))),u("div",{class:"links"},u(c,{to:"/about"},"About"),u("a",{href:k,target:"_blank"},"Website")))}),z=e({setup:()=>()=>{const e=(new Date).getFullYear();return u("a",{href:k},u("footer",{class:"text-text-gray font-serif text-xs pb-6 block text-center"},"Copyright © ",e," Innei. Powered by Vue 3."))}});var A=e({components:{Header:T,Footer:z}});const W={class:"wrap"};A.render=function(e,t,r,a,s,l){const i=n("Header"),u=n("Footer");return o(),p("div",W,[d(i),h("main",null,[g(e.$slots,"default")]),d(u)])};const D=e({name:"note",setup(){const e=m(),t=parseInt(e.params.id),n=f({note:{}});return y((()=>{document.title=`${N} | ${S}`})),v((async()=>{n.note=await(async e=>{const t=i.gql`
+    query getNoteContent($nid: Int) {
+      getNoteById(nid: $nid) {
+        data {
+          title
+          created
+          modified
+          text
+          nid
+          id
+        }
+      }
+    }
+  `;return(await C.request(t,{nid:e})).getNoteById.data})(t),document.title=n.note.title+" | "+N;const e=await fetch(`${_}/v2/markdown/render/${n.note.id}`,{}),r=await e.text(),a=document.getElementById("html");try{const e=(new DOMParser).parseFromString(r,"text/html"),t=e.querySelector("article");t.querySelector("h1").style.cssText="text-align:center",a.appendChild(t);e.querySelectorAll("style").forEach((e=>{a.prepend(e)}))}catch(o){console.error(o),a.innerHTML="<p>404</p>"}})),()=>u(A,null,n.note.id&&u("div",{id:"html"}))}});const M=e({props:{notes:{type:Array,required:!0,default:[]}},setup:e=>()=>u("ul",{class:"list-root"},e.notes.map((e=>{const t=new Date(e.created),n=t.getDate(),r=t.getMonth()+1;return u("li",{key:e._id},u(c,{to:`/notes/${e.nid}`},u("span",{class:"title"},e.title),u("span",{class:"created"},`${r}/${n}`)))})))});const O=e({setup(){const e=P(!0),t=f({notes:[],pager:{hasNextPage:!1,hasPrevPage:!1,totalPage:1}}),n=m(),r=P(parseInt(n.query.page)||1);v((async()=>{await a(r.value)}));const a=async(n=1,a=15)=>{const o=await(async(e=1,t=10)=>{const n=i.gql`
+    query getNoteList($page: Int, $size: Int) {
+      getNotesWithPager(page: $page, size: $size) {
+        data {
+          created
+          title
+          nid
+          id
+        }
+        pagination {
+          hasNextPage
+          hasPrevPage
+          totalPage
+        }
+      }
+    }
+  `,r=await C.request(n,{page:e,size:t});return{data:r.getNotesWithPager.data,pagination:r.getNotesWithPager.pagination}})(n,a);t.notes=o.data,t.pager=o.pagination,e.value=!1,r.value=n};return()=>u(A,null,u(M,{notes:t.notes}),!e.value&&u("div",{class:"pager"},u("div",{class:b("prev",!t.pager.hasPrevPage&&"disable"),onClick:()=>{if(!t.pager.hasPrevPage)return;const e=r.value-1;a(e),R.push({path:"/",query:{page:e}})}},"上一页"),u("div",{class:b("next",!t.pager.hasNextPage&&"disable"),onClick:()=>{if(!t.pager.hasNextPage)return;const e=r.value+1;a(e),R.push({path:"/",query:{page:e}})}},"下一页")))}});const V=e({setup:()=>()=>u(A,null,u("article",{class:"page-wrapper"},u("h1",null,"This Site."),u("p",null,"Powered by Vue 3 & Vite"),u("p",null,"GraphQL supported."),u("h1",null,"And me.."),u("p",null,"Third-year undergrad"),u("p",null,"Wenzhou University of Technology"),u("p",null,"TypeScript, NodeJS"),u("p",null,"NestJS, NextJS, NuxtJS, React, Vue"),u("p",null,u("a",{href:"http://github.com/innei",target:"_blank",rel:"noopener noreferrer"},"GitHub"),u("a",{href:"http://innei.ren/feed",target:"_blank",rel:"noopener noreferrer"},"RSS")),u("blockquote",{class:"mt-12"},u("p",null,"幻なんかじゃない"),u("p",null,"人生は夢じゃない"),u("p",null,"僕達ははっきりと生きてるんだ"),u("p",null,"夕焼け空は赤い 炎のように赤い "),u("p",null,"この星の半分を真っ赤に染めた"),u("p",null,"それよりももっと赤い血が"),u("p",null,"体中を流れてるんだぜ"))))}),F=new w,H=[{name:"root",path:"/",component:()=>{return e=()=>Promise.resolve().then((function(){return I})),(t=void 0)&&0!==t.length?Promise.all(t.map((e=>{if((e=`${e}`)in L)return;L[e]=!0;const t=e.endsWith(".css"),n=t?'[rel="stylesheet"]':"";if(document.querySelector(`link[href="${e}"]${n}`))return;const r=document.createElement("link");return r.rel=t?"stylesheet":"modulepreload",t||(r.as="script",r.crossOrigin=""),r.href=e,document.head.appendChild(r),t?new Promise(((e,t)=>{r.addEventListener("load",e),r.addEventListener("error",t)})):void 0}))).then((()=>e())):e();var e,t},children:[{path:"/",component:O,meta:{title:N+" | "+S,fulltitle:!0},name:"home"},{path:"/notes/:id",props:!0,component:D,meta:{title:""},name:"note"},{path:"/about",component:V,meta:{title:"关于"}}]}],J=$({history:q(),routes:H});J.beforeEach(((e,t,n)=>{F.start(),t.meta.title&&(document.title=t.meta.fulltitle?t.meta.title:t.meta.title+" | "+N),n()})),J.afterEach((()=>{F.finish()})),J.onError((()=>{F.finish()}));var R=J;x(E).use(R).mount("#app");
